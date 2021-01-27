@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+.styledText{
+    font-family: Ubuntu;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-top: 0;
+    margin-bottom: 0.3rem;
+}
+
+.styledText--fontSize {
+    padding-top: 1rem;
+    font-weight: 200;
+    margin-bottom: 0;
+}
+
+.outerCard {
+    display: grid;
+    border: 0.5px solid #4d4d4d;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    width: 240px;
+    height: 300px;
+}
+
+.innerCard {
+    justify-self: start;
+    margin-left: 1rem;
+    font-size: 19px;
+    text-align: start;
+}
+
+.driverDetailSection {
+    position: relative;
+}
+
+.driverDetails {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding-bottom: 1rem;
+    padding-right: 1rem;
+}
+
+.driverDetails a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}

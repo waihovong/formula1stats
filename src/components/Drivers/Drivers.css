@@ -1,0 +1,10 @@
+body {
+    background-color: #101D28;
+}
+
+.card {
+    /* display: inline-block; */
+    display: inline-grid;
+    grid-template-columns: 20% 20% 20% 20%;
+    column-gap: 5px;
+}
