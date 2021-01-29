@@ -8,3 +8,8 @@ body {
     grid-template-columns: 20% 20% 20% 20%;
     column-gap: 5px;
 }
+
+img {
+    width: 200px;
+    height: 200px;
+}
