@@ -1,0 +1,27 @@
+const driverImages = [
+    {id: 'AIT', src: require('../../images/AIT.png').default},
+    {id: 'ALB', src: require('../../images/ALB.png').default},
+    {id: 'BOT', src: require('../../images/BOT.png').default},
+    {id: 'FIT', src: require('../../images/FIT.png').default},
+    {id: 'GAS', src: require('../../images/GAS.png').default},
+    {id: 'GIO', src: require('../../images/GIO.png').default},
+    {id: 'GRO', src: require('../../images/GRO.png').default},
+    {id: 'HAM', src: require('../../images/HAM.png').default},
+    {id: 'HUL', src: require('../../images/HUL.png').default},
+    {id: 'KVY', src: require('../../images/KVY.png').default},
+    {id: 'LAT', src: require('../../images/LAT.png').default},
+    {id: 'LEC', src: require('../../images/LEC.png').default},
+    {id: 'MAG', src: require('../../images/MAG.png').default},
+    {id: 'NOR', src: require('../../images/NOR.png').default},
+    {id: 'OCO', src: require('../../images/OCO.png').default},
+    {id: 'PER', src: require('../../images/PER.png').default},
+    {id: 'RAI', src: require('../../images/RAI.png').default},
+    {id: 'RIC', src: require('../../images/RIC.png').default},
+    {id: 'RUS', src: require('../../images/RUS.png').default},
+    {id: 'SAI', src: require('../../images/SAI.png').default},
+    {id: 'STR', src: require('../../images/STR.png').default},
+    {id: 'VER', src: require('../../images/VER.png').default},
+    {id: 'VET', src: require('../../images/VET.png').default},
+]
+
+export default driverImages;

@@ -5,9 +5,9 @@ const DriverCard = ({ driverFirstName, driverLastName, driverNumber, driverDetai
     return (
         <div className="outerCard">
             <div className="innerCard">
-                <p className="styledText styledText--fontSize">{driverFirstName}</p>
-                <p className="styledText">{driverLastName}</p>
-                <p className="styledText">{driverNumber}</p>
+                <p className="styledText styledText--fontSize givenName">{driverFirstName}</p>
+                <p className="styledText familyName">{driverLastName}</p>
+                <p className="styledText driverNumber">{driverNumber}</p>
             </div>
             <div className="driverDetailSection">
                 <span className="driverDetails"><a href={driverDetails}>See details</a></span>
