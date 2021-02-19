@@ -13,7 +13,6 @@ const DriverCard = ({ driverFirstName, driverLastName, driverNumber, driverDetai
                 <span className="driverDetails"><a href={driverDetails}>See details</a></span>
             </div>
             <div className="driverImageContainer">
-                {/* <p>{driverImg}</p> */}
                 <img src={driverImg} alt="drivers" className="driverDim"/>
             </div>
         </div>

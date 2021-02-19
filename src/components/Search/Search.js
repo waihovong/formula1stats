@@ -1,31 +1,16 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-const Search = ({ search }) => {
-    const [searchValue, setSearchValue] = useState("");
-    
-    const handleChange = (event) => {
-        setSearchValue(event.target.value);
-    }
-
-    const resetSearchField = () => {
-        setSearchValue("");
-    }
-
-    const callSearchField = (event) => {
-        event.preventDefault();
-        search(searchValue);
-        resetSearchField()
-    }
+const Search = ({ search, handleChange }) => {
 
     return(
         <form className="search">
             <input
-                value={searchValue}
+                value={search}
                 placeholder="Search for driver or team..."
                 type="text"
                 onChange={handleChange}
             />
-            <button onClick={callSearchField} type="submit">Search</button>
+            <button onClick={handleChange} type="submit">Search</button>
         </form>
     )
 }
