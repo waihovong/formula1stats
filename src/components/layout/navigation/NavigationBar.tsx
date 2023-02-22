@@ -1,18 +1,21 @@
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 function Navigation() {
     return (
-        <nav className="w-1/2 mx-auto m-7">
-            <div className="text-left flex items-center w-full">
-                {/* TODO: change to a href and link back to landing page */}
-                <span className="uppercase font-semibold text-lg w-1/3 hover:text-red-500">Formula 1 Stats</span> 
-                <ul className="uppercase flex items-center w-full justify-evenly">
-                    <li className="hover:text-red-500 font-semibold">Latest</li>
-                    <li className="hover:text-red-500 font-semibold">Drivers</li>
-                    <li className="hover:text-red-500 font-semibold">Teams</li>
-                    <li className="hover:text-red-500 font-semibold">Standings</li>
-                    <li className="hover:text-red-500 font-semibold">Analysis</li>
-                </ul>
-            </div>
-        </nav>
+            <nav className="mx-auto p-7 flex xs:block xs:text-center sm:block sm:text-center md:block md:text-center bg-red-600">
+                <Link to="/" className="uppercase font-semibold w-1/3 text-lg text-white cursor-pointer hover:text-black sm:mx-auto xs:text-base">Formula 1 Stats</Link> 
+                <div className="text-left flex items-center w-full">
+                    <ul className="uppercase flex items-center w-full justify-evenly cursor-pointer">
+                        <li className="hover:text-black text-white font-semibold xs:text-xs xs:mx-1 sm:mx-2 md:mx-2 ">Latest</li>
+                        <li className="hover:text-black text-white font-semibold xs:text-xs xs:mx-1 sm:mx-2 md:mx-2">Drivers</li>
+                        <li className="hover:text-black text-white font-semibold xs:text-xs xs:mx-1 sm:mx-2 md:mx-2">Teams</li>
+                        <li className="hover:text-black text-white font-semibold xs:text-xs xs:mx-1 sm:mx-2 md:mx-2">
+                            <Link to="/standings">Standings</Link>
+                        </li>
+                        <li className="hover:text-black text-white font-semibold xs:text-xs xs:mx-1">Analysis</li>
+                    </ul>
+                </div>
+            </nav>
     )
 }
 
