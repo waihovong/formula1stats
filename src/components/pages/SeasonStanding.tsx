@@ -5,47 +5,53 @@ import ConstructorStandingTable from "../layout/table/ConstructorStanding";
 import DriverStandingTable from "../layout/table/DriverStanding";
 import ToggleSwitchBar from "../layout/navigation/ToggleSwitchBar";
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import SelectSeason from "../layout/navigation/SelectSeason";
 
 function SeasonStanding() {
     const [drivers, setDrivers] = useState<DriverStanding[]>([]);
     const [constructors, setConstructors] = useState<ConstructorStanding[]>([]);
-    const [showTable, setShowTable] = useState(true);
     const [activeTab, setActiveTab] = useState("Driver");
     const [isLoaded, setIsLoaded] = useState(false);
-    useEffect(() => {
-        const getDrivers = async () => {
-            try {
-                const driversData = await fetchAllDriverInformation('2019'); //TODO match year with selected year instead
-                const constructorsData = await fetchConstructorStanding('2019');
-                setDrivers(driversData);
-                setConstructors(constructorsData);
-                setIsLoaded(true);
-            }
-            catch (ex)
-            {
-                console.log(ex);
-            }
+    const [season, setSeason] = useState("2022");
+    
+
+    const getSeasonStanding = async (year: string) => {
+        try {
+            const driversData = await fetchAllDriverInformation(season); //TODO match year with selected year instead
+            const constructorsData = await fetchConstructorStanding(season);
+            
+            driversData.sort((a, b) => parseInt(a.position) > parseInt(b.position) ? 1 : -1);
+            constructorsData.sort((a, b) => parseInt(a.position) > parseInt(b.position) ? 1 : -1);        
+            setDrivers(driversData);
+            setConstructors(constructorsData);
+            setIsLoaded(true);
         }
-        
-        getDrivers();
-    }, []);
-
-    drivers.sort((a,b) => parseInt(a.position) > parseInt(b.position) ? 1 : -1);
-    constructors.sort((a,b) => parseInt(a.position) > parseInt(b.position) ? 1 : -1);
-
-    const handleSwitchTable = () => {
-        setShowTable((show) => !show);
+        catch (ex)
+        {
+            console.log(ex);
+        }
     }
 
+    useEffect(() => {
+        setIsLoaded(false)
+        getSeasonStanding(season)
+    }, [season])
+
+    
     const handleOptionChange = (option: string) => {
         setActiveTab(option);
     }
 
+    const handleSeasonChange = (selectedSeason: string) => {
+        setSeason(selectedSeason);
+      };
+
     return (
-        <div className="mt-10">
+        <div className="mt-10 mb-10">
             <div className="w-1/2 mx-auto text-left mb-2 flex items-center justify-start xs:flex xs:items-center xs:justify-center sm:flex sm:items-center sm:justify-center md:justify-center">
                 {/* TODO: change the year to dynamic year */}
-                <span className="text-5xl font-semibold mr-4 xs:text-4xl">2019</span> <span className="text-2xl font-semibold uppercase xs:text-lg">season</span>
+                <SelectSeason onSelectSeason={handleSeasonChange}/>
+                <span className="text-5xl font-semibold mr-4 xs:text-4xl">{season}</span> <span className="text-2xl font-semibold uppercase xs:text-lg">season</span>
             </div>
             <div>
                 <ToggleSwitchBar onOptionChange={handleOptionChange} activeTab={activeTab}/>
@@ -55,8 +61,9 @@ function SeasonStanding() {
                             <DriverStandingTable drivers={drivers}/>
                         ) : (
                             <ConstructorStandingTable constructors={constructors} />
-                        ) : <Skeleton count={15} height={25} width={1000} className="block bg-gray-100"/>  }
-
+                        ) : (
+                            <Skeleton count={15} height={25} width={1000} className="block bg-gray-100"/>
+                        )}
                     </div>
                 }
             </div>

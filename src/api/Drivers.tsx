@@ -47,10 +47,10 @@ let driverInformationCache: DriverStanding[] = [];
 let driverInformationCacheTime: number = 0;
 
 export const fetchAllDriverInformation = async (year: string): Promise<DriverStanding[]> => {
-	if(Date.now() - driverInformationCacheTime < CACHE_TIMEOUT)
-    {
-        return driverInformationCache;
-    }
+	// if(Date.now() - driverInformationCacheTime < CACHE_TIMEOUT)
+  //   {
+  //       return driverInformationCache;
+  //   }
 	try {
 		const driverResponse = await fetchListOfDrivers(year);
 		const mapDriver = await Promise.all(driverResponse.map(async (driver: DriverStanding) => {
@@ -63,8 +63,8 @@ export const fetchAllDriverInformation = async (year: string): Promise<DriverSta
 			}
 		 }));
 
-		driverInformationCache = mapDriver;
-		driverInformationCacheTime = Date.now();
+		// driverInformationCache = mapDriver;
+		// driverInformationCacheTime = Date.now();
 		return mapDriver;
 	}
 	catch (error) {
@@ -74,10 +74,10 @@ export const fetchAllDriverInformation = async (year: string): Promise<DriverSta
 }
 
 export const fetchListOfDrivers = async (year: string): Promise<DriverStanding[]> => {
-    if(Date.now() - driverListCacheTime < CACHE_TIMEOUT)
-    {
-        return driverListCache;
-    }
+    // if(Date.now() - driverListCacheTime < CACHE_TIMEOUT)
+    // {
+    //     return driverListCache;
+    // }
     try {
         const driverResponse = await fetch(`http://ergast.com/api/f1/${year}/drivers.json`)
         const driverData  = await driverResponse.json();
@@ -93,8 +93,8 @@ export const fetchListOfDrivers = async (year: string): Promise<DriverStanding[]
           );
 
         // Cache results to result load time of all APIs for mapping
-        driverListCache = driverList;
-        driverListCacheTime = Date.now();
+        // driverListCache = driverList;
+        // driverListCacheTime = Date.now();
 
         return driverWithTeams;
     }
